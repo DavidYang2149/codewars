@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_ID": "root",
+    "MONGO_PW": "mongodb",
+    "JWT_KEY": "secert"
+  }
+}
