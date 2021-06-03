@@ -10,11 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/DavidYang2149/codewars.git"
   },
-  "keywords": ["codewars"],
+  "keywords": [
+    "codewars"
+  ],
   "author": "davidyang2149",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DavidYang2149/codewars/issues"
   },
-  "homepage": "https://github.com/DavidYang2149/codewars#readme"
+  "homepage": "https://github.com/DavidYang2149/codewars#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.4"
+  }
 }
