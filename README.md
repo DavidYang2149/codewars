@@ -5,3 +5,10 @@
 ## 📚 Language
 
 - Javascript
+
+
+## Command
+
+```
+npx jest --watchAll --coverage --detectOpenHandles
+```
