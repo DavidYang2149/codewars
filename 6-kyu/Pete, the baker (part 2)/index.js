@@ -1,5 +1,22 @@
 function getMissingIngredients(recipe, added) {
-  // TODO
+  needed = {};
+
+  numCakes = 1; // number of cakes
+
+  for (ing in recipe) {
+    if (ing in added) {
+      cakes = Math.ceil(added[ing] / recipe[ing]);
+      numCakes = cakes > numCakes ? cakes : numCakes;
+    }
+  }
+
+  for (ing in recipe) {
+    if (!(ing in added)) needed[ing] = recipe[ing] * numCakes;
+    if (recipe[ing] * numCakes - added[ing])
+      needed[ing] = recipe[ing] * numCakes - added[ing];
+  }
+
+  return needed;
 }
 
 module.exports = getMissingIngredients;
@@ -21,4 +38,43 @@ var recipe = {flour: 200, eggs: 1, sugar: 100};
 getMissingIngredients(recipe, {flour: 50, eggs: 1}); // must return {flour: 150, sugar: 100}
 getMissingIngredients(recipe, {}); // must return {flour: 200, eggs: 1, sugar: 100}
 getMissingIngredients(recipe, {flour: 500, sugar: 200}); // must return {flour: 100, eggs: 3, sugar: 100}
+*/
+
+/*
+// Case 1.
+function getMissingIngredients(recipe, added) {
+  needed = {};
+
+  numCakes = 1; // number of cakes
+
+  for (ing in recipe) {
+    if (ing in added) {
+      cakes = Math.ceil(added[ing] / recipe[ing]);
+      numCakes = cakes > numCakes ? cakes : numCakes;
+    }
+  }
+
+  for (ing in recipe) {
+    if (!(ing in added)) needed[ing] = recipe[ing] * numCakes;
+    if (recipe[ing] * numCakes - added[ing])
+      needed[ing] = recipe[ing] * numCakes - added[ing];
+  }
+
+  return needed;
+}
+
+// Case 2.
+function getMissingIngredients(recipe, added) {
+  var target = 1;
+  for (e in added) {
+    if (e in recipe) { target = Math.max(target, Math.ceil(added[e]/recipe[e])); }
+    else { throw "Added an ingredient not in the recipe. You are on your own now."; }
+  }
+  var out = {}
+  for (e in recipe) {
+    var needed = target*recipe[e] - ((e in added) ?  added[e] : 0);
+    if(needed > 0) out[e] = needed;
+  }
+  return out;
+}
 */
