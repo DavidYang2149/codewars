@@ -1,5 +1,6 @@
 function rgb(r, g, b) {
-  // complete this function  
+  const colors = [r, g, b].map(x => x < 0 ? 0 : x).map(x => x > 255 ? 255 : x);
+  return colors.map(x => x.toString(16)).map(x => x.length == 1 ? `0${x}` : x).reduce((acc, x) => { return `${acc}${x}` }, '').toUpperCase();
 }
 
 module.exports = rgb;
