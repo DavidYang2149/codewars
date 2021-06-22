@@ -21,10 +21,15 @@
 // }
 
 // Case 3.
+// function arrayDiff(a, b) {
+//   const filterA = a.filter(x => !b.includes(x));
+//   const result = filterA.reduce((acc, value) => { return !acc.includes(value) ? [...acc, value] : acc }, []);
+//   return result;
+// }
+
+// Final Result
 function arrayDiff(a, b) {
-  const filterA = a.filter(x => !b.includes(x));
-  const result = filterA.reduce((acc, value) => { return !acc.includes(value) ? [...acc, value] : acc }, []);
-  return result;
+  return [...a].filter(x => !b.includes(x));
 }
 
 module.exports = arrayDiff;
