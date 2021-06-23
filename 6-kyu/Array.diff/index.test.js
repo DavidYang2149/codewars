@@ -7,6 +7,6 @@ describe("Sample tests", function () {
     expect(arrayDiff([1, 8, 2], [])).toEqual([1, 8, 2]);  // "a was [1,8,2], b was []"
     expect(arrayDiff([1, 2, 3], [1, 2])).toEqual([3]);  // "a was [1,2,3], b was [1,2]"
     // error case Test
-    expect(arrayDiff([1, 2, 2], [1])).toEqual([2]);  // "a was [1,2,3], b was [1,2]"
+    expect(arrayDiff([1, 2, 2], [1])).toEqual([2, 2]);  // "a was [1,2,3], b was [1,2]"
   });
 });
