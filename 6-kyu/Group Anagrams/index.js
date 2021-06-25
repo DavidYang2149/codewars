@@ -1,26 +1,10 @@
-function stringSort(targetString) {
-  return targetString.split('').sort();
-}
-
 function groupAnagrams(words) {
-  const result = [];
-  let index = 0;
-  while (true) {
-    if (words.length === 0) break;
-
-    let array = [...words];
-
-
-
-    for (let i = 0; i < array.length; i++) {
-      if (i === 0) {
-        result[index].push(array[0]);
-        continue;
-      }
-    }
-  }
-
-  return result;
+  var groups = {};
+  words.forEach(function (w) {
+    var s = w.split('').sort().join('');
+    groups[s] = (groups[s] || []).concat([w]);
+  });
+  return Object.keys(groups).map(function (k) { return groups[k]; });
 }
 
 module.exports = groupAnagrams;
