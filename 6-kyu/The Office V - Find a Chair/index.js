@@ -1,5 +1,18 @@
 function meeting(x, need) {
+  if (need === 0) return 'Game On';
 
+  const result = x.reduce((acc, values) => {
+    const totalChairs = acc.reduce((subAcc, subX) => { return subAcc + subX }, 0);
+    if (totalChairs < need) {
+      const leftChairs = values[1] - values[0].length > 0 ? values[1] - values[0].length : 0;
+      const chairs = need > (totalChairs + leftChairs) ? leftChairs : need - totalChairs;
+      return [...acc, chairs];
+    }
+    return acc;
+  }, []);
+
+  if (need > result.reduce((acc, x) => { return acc + x }, 0)) return 'Not enough!';
+  return result;
 }
 
 module.exports = meeting;
