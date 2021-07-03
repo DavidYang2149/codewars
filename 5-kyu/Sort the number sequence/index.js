@@ -1,8 +1,12 @@
-const arraySum = x => x.reduce((acc, value) => acc + value, 0);
+const sum = arr => arr.reduce((s, v) => s + +v, 0);
 
 function sortSequence(sequence) {
-  // return sequence.toString().split('0').map(x => [0, ...x.sort()]).sort((a, b) => arraySum(a) - arraySum(b));
-  return sequence.toString().split('0').map(x => x.split(','));
+  return (sequence + '').split(/\b0\b/)
+    .slice(0, -1)
+    .map(sub => sub.split(",").filter(x => x).map(Number).sort((a, b) => a - b).concat([0]))
+    .reduce((tmp, sub, i) => tmp.concat({ sub: sub, sum: sum(sub), idx: i }), [])
+    .sort((a, b) => a.sum - b.sum || a.idx - b.idx)
+    .reduce((res, sub) => res.concat(sub.sub), []);
 }
 
 module.exports = sortSequence;
